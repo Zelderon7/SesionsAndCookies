@@ -20,7 +20,7 @@ Made for Web Development @ Vocational School of Electrical Engineering and Elect
 ### Cloning the Repository
 Clone this repository using the following command:
 ```bash
-https://github.com/your-username/aspnet-mvc-cookies-sessions.git
+https://github.com/batfiowoof/SessionAndCookies.git
 ```
 
 ### Setting Up
