@@ -6,7 +6,7 @@ builder.Services.AddControllersWithViews();
 // Add session support for 30 minutes
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(15);
+    options.IdleTimeout = TimeSpan.FromSeconds(30);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });

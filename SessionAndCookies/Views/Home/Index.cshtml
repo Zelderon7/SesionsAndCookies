@@ -1,27 +1,29 @@
-﻿@{
-    ViewData["Title"] = "Начална страница";
+﻿@using Microsoft.AspNetCore.Http;
+@{
+    var themeClass = ViewBag.UserPreference == "DarkMode" ? "dark-theme" : "light-theme";
 }
+<body class="@themeClass">
+    <h2>Welcome!</h2>
 
-<h2>Добре дошли</h2>
+    @if (ViewBag.UserName != null)
+    {
+        <p>Hello, @ViewBag.UserName!</p>
+    }
+    else
+    {
+        <form asp-action="SetUserName" method="post">
+            <label for="userName">Enter your name:</label>
+            <input type="text" id="userName" name="userName" required />
+            <button type="submit">Submit</button>
+        </form>
+    }
 
-@if (ViewBag.UserName != null)
-{
-    <p>Здравейте, @ViewBag.UserName!</p>
-}
-else
-{
-    <form asp-action="SetUserName" method="post">
-        <label for="userName">Въведете вашето име:</label>
-        <input type="text" id="userName" name="userName" required />
-        <button type="submit">Запази</button>
+    <h2>Choose preferred theme:</h2>
+
+    <form asp-action="SetCookie" method="post">
+        <button type="submit" name="preference" value="DarkMode">Dark theme</button>
+        <button type="submit" name="preference" value="LightMode">Light theme</button>
     </form>
-}
 
-<h2>Изберете предпочитание на тема:</h2>
-
-<form asp-action="SetCookie" method="post">
-    <button type="submit" name="preference" value="DarkMode">Тъмна тема</button>
-    <button type="submit" name="preference" value="LightMode">Светла тема</button>
-</form>
-
-<p>Вашата текуща тема: @ViewBag.UserPreference</p>
+    <p>Your current theme: @ViewBag.UserPreference</p>
+</body>

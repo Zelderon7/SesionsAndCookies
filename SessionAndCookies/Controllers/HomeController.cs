@@ -34,17 +34,17 @@ namespace SessionAndCookies.Controllers
         }
         public IActionResult Index()
         {
-            // Извличане на UserPreference от бисквитката
+            // UserPreference
             if (Request.Cookies.TryGetValue("UserPreference", out string userPreference))
             {
                 ViewBag.UserPreference = userPreference;
             }
             else
             {
-                ViewBag.UserPreference = "Default"; // Стойност по подразбиране, ако няма зададена бисквитка
+                ViewBag.UserPreference = "Default"; // default value without cookie
             }
 
-            ViewBag.UserName = HttpContext.Session.GetString("UserName"); // Вземане на името от сесията, ако е налично
+            ViewBag.UserName = HttpContext.Session.GetString("UserName"); // getting the user name from the session
             return View();
         }
 
